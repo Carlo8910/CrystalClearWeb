@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Text Extractor & Q&A</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-slate-800 mb-8">PDF Text Extractor & Q&A</h1>
+        
+        <!-- Upload Section -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-slate-700 mb-4">Upload PDF</h2>
+            <div class="flex items-center justify-center w-full">
+                <label class="flex flex-col items-center justify-center w-full h-64 border-2 border-slate-300 border-dashed rounded-lg cursor-pointer bg-slate-50 hover:bg-slate-100 transition-colors duration-200">
+                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <svg class="w-8 h-8 mb-2 text-slate-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                        </svg>
+                        <p class="mb-2 text-sm text-slate-500"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                        <p class="text-xs text-slate-500">PDF files only</p>
+                    </div>
+                    <input type="file" class="hidden" accept=".pdf" id="pdfInput" />
+                </label>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="hidden">
+            <div class="flex items-center justify-center space-x-2">
+                <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-slate-600"></div>
+                <span class="text-slate-600">Processing PDF...</span>
+            </div>
+        </div>
+
+        <!-- Extracted Text Section -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8 hidden" id="textSection">
+            <h2 class="text-2xl font-semibold text-slate-700 mb-4">Extracted Text</h2>
+            <div id="extractedText" class="prose max-w-none text-slate-700"></div>
+        </div>
+
+        <!-- Q&A Section -->
+        <div class="bg-white rounded-lg shadow-md p-6 hidden" id="qaSection">
+            <h2 class="text-2xl font-semibold text-slate-700 mb-4">Ask Questions</h2>
+            <div class="flex gap-4">
+                <input type="text" id="questionInput" placeholder="Ask a question about the text..." 
+                    class="flex-1 px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-slate-500">
+                <button id="askButton" class="px-6 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors">
+                    Ask
+                </button>
+            </div>
+            <div id="answerSection" class="mt-4 hidden">
+                <h3 class="text-xl font-semibold text-slate-700 mb-2">Answer:</h3>
+                <div id="answer" class="text-slate-700"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

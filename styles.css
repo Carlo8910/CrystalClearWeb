@@ -1,0 +1,66 @@
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+/* Smooth transitions */
+.transition-all {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Loading animation */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Prose styling for extracted text */
+.prose {
+    max-width: 65ch;
+    line-height: 1.6;
+}
+
+.prose p {
+    margin-bottom: 1.5em;
+}
+
+/* Focus styles */
+.focus-ring {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(100, 116, 139, 0.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .flex {
+        flex-direction: column;
+    }
+    
+    .gap-4 {
+        gap: 1rem;
+    }
+} 
